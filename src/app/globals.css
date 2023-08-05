@@ -2,26 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .kq-text {
+    background: linear-gradient(to top, theme('colors.white'), theme('colors.purple.400') 135%);
+    -webkit-background-clip: text;
+    color: theme('colors.black/0');
   }
-}
+  .kq-text-600 {
+    background: linear-gradient(to top, theme('colors.white'), theme('colors.purple.600') 135%);
+    -webkit-background-clip: text;
+    color: theme('colors.black/0');
+  }
+  .kq-text-underline {
+    text-decoration: underline;
+    text-decoration-color: theme('colors.purple.100');
+    transition: text-decoration-color .3s ease-out;
+  }
+  .kq-text-underline:hover {
+    text-decoration-color: theme('colors.purple.300');
+  }
+  .kq-text-shadow {
+    transition: text-shadow .3s ease-out;
+  }
+  .kq-text-shadow:hover {
+    text-shadow: 0px 0px 20px theme('colors.purple.300/50'), 0 0 20px theme('colors.purple.300/25'), 0 0 40px theme('colors.purple.300/50');
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .hover-shadow-purple {
+    --shadow-color: theme('colors.purple.400');
+    box-shadow: 12px 12px 2px 1px var(--shadow-color);
+    transition: box-shadow 0.3s ease;
+  }
+  .hover-shadow-purple:hover {
+    box-shadow: 0px 0px 19px 3px var(--shadow-color);
+  }
 }
