@@ -5,29 +5,30 @@ export const enum NavNames {
   Profile = "Profile",
 }
 
-export const enum NavLinks {
+export const enum AppLinks {
   Characters = "/characters",
   About = "/about-me",
   SendMessage = "/send-message",
   Profile = "/user/profile",
   KeqingPage = "/characters/keqing",
+  Pictures = "/pictures",
 }
 
-export const navList: { link: NavLinks; name: NavNames }[] = [
+export const navList: { link: AppLinks; name: NavNames }[] = [
   {
-    link: NavLinks.Characters,
+    link: AppLinks.Characters,
     name: NavNames.Characters,
   },
   {
-    link: NavLinks.About,
+    link: AppLinks.About,
     name: NavNames.About,
   },
   {
-    link: NavLinks.SendMessage,
+    link: AppLinks.SendMessage,
     name: NavNames.SendMessage,
   },
   {
-    link: NavLinks.Profile,
+    link: AppLinks.Profile,
     name: NavNames.Profile,
   },
 ];

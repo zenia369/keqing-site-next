@@ -8,11 +8,13 @@ interface PageLayoutProps {
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
-    <div className="container xl m-auto py-5">
-      <Navigation />
-      {children}
+    <>
+      <div className="container xl m-auto py-5">
+        <Navigation />
+        {children}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

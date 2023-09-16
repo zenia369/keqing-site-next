@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { FC } from "react";
 import { MdOutlinedFlag } from "react-icons/md";
+import { BsEnvelope } from "react-icons/bs";
 
-import { NavLinks, NavNames } from "@/shared/appLinks";
+import { AppLinks, NavNames } from "@/shared/appLinks";
 
 interface FooterProps {
   showLink?: boolean;
@@ -10,14 +11,21 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = ({ showLink = true }) => {
   return (
-    <footer>
-      <div>
-        <MdOutlinedFlag />
-        <p>По запитаням звертатись у формі рецензії.</p>
+    <footer className="bg-purple-400 text-white border-t-4 border-purple-500">
+      <div className="container xl m-auto flex justify-between items-center py-5">
+        <div className="flex justify-between items-center gap-2">
+          <MdOutlinedFlag className="text-[20px]" />
+          <p>По запитаням звертатись у формі рецензії.</p>
+        </div>
+        {showLink && (
+          <Link
+            href={AppLinks.SendMessage}
+            className="flex justify-between items-center gap-2 hover:underline"
+          >
+            <BsEnvelope /> {NavNames.SendMessage}
+          </Link>
+        )}
       </div>
-      {showLink && (
-        <Link href={NavLinks.SendMessage}>{NavNames.SendMessage}</Link>
-      )}
     </footer>
   );
 };

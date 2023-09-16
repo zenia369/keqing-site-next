@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-import mainImg from "~/public/pages/Keqing.png";
-import electroImg from "~/public/pages/electro.png";
+import mainImg from "@/assets/images/keqing.png";
+import electroImg from "@/assets/images/electro.png";
 
-import { NavLinks } from "@/shared/appLinks";
+import { AppLinks } from "@/shared/appLinks";
 
 const Header: FC = () => {
   return (
@@ -13,7 +13,7 @@ const Header: FC = () => {
       <div className="flex items-center justify-around gap-9">
         <Image src={mainImg} alt="keqing" width={410} height={410} />
         <div className="flex justify-center flex-col gap-5">
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <h1 className="text-5xl font-light text-black">Keqing/Ке Цин</h1>
             <Image src={electroImg} alt="electro" width={80} height={80} />
           </div>
@@ -27,7 +27,7 @@ const Header: FC = () => {
             *Взагалі, вона чудова і приємна дівчина. Обожнюю ЇЇ!!
           </p>
           <Link
-            href={NavLinks.KeqingPage}
+            href={AppLinks.KeqingPage}
             className="self-end px-5 py-2 border border-purple-400 w-fit rounded-2xl text-purple-400 text-xl hover-shadow-purple hover:text-white hover:bg-purple-400 transition-all ease-in-out duration-150"
           >
             дуже цікаво, хочу ще...
