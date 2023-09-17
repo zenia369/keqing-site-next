@@ -3,6 +3,7 @@ export const enum NavNames {
   About = "About",
   SendMessage = "Send message",
   Profile = "Profile",
+  Home = "Home",
 }
 
 export const enum AppLinks {
@@ -12,9 +13,12 @@ export const enum AppLinks {
   Profile = "/user/profile",
   KeqingPage = "/characters/keqing",
   Pictures = "/pictures",
+  Home = "/",
 }
 
-export const navList: { link: AppLinks; name: NavNames }[] = [
+export type ListNames = (keyof typeof NavNames)[];
+
+export const appNavList: { link: AppLinks; name: NavNames }[] = [
   {
     link: AppLinks.Characters,
     name: NavNames.Characters,
@@ -32,5 +36,3 @@ export const navList: { link: AppLinks; name: NavNames }[] = [
     name: NavNames.Profile,
   },
 ];
-
-export type ListNames = (keyof typeof NavNames)[];
