@@ -12,7 +12,11 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({ showLink = true }) => {
   return (
     <footer className="bg-purple-400 text-white border-t-4 border-purple-500">
-      <div className="container xl m-auto flex justify-between items-center py-5">
+      <div
+        className={`container xl m-auto flex items-center py-5 ${
+          !showLink ? "justify-center" : "justify-between"
+        }`}
+      >
         <div className="flex justify-between items-center gap-2">
           <MdOutlinedFlag className="text-[20px]" />
           <p>По запитаням звертатись у формі рецензії.</p>

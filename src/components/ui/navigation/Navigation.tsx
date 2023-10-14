@@ -27,13 +27,14 @@ const Navigation: FC<NavigtionProps> = ({
           href={AppLinks.Characters}
           text="Characters"
         />
-        <NavListItem tooltipText="About" href={AppLinks.About} text="About" />
-        {isShowSendMessageLink && (
+        {isShowSendMessageLink ? (
           <NavListItem
             tooltipText="Send message"
             href={AppLinks.SendMessage}
             text="Send message"
           />
+        ) : (
+          <NavListItem tooltipText="About" href={AppLinks.About} text="About" />
         )}
         <NavListItem
           tooltipText="Profile"
