@@ -33,7 +33,7 @@ const useFormField = <T = string>({ initialValue, ...options }: FormOptions<T>) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, validateStatus, options?.validate]);
 
-  const reset = (newInitialValue: T) => {
+  const reset = (newInitialValue?: T) => {
     setError(null);
     setValidateStatus("untouched");
     setValue(newInitialValue ?? initialValue);

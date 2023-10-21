@@ -85,6 +85,14 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .shadow-outline {
+    box-shadow: 0 0 0 0 theme("colors.purple.300/.5");
+    transition: box-shadow 0.2s ease;
+  }
+  .shadow-outline:focus {
+    box-shadow: 0 0 0 5px theme("colors.purple.300/.5");
+  }
 }
 
 @keyframes rotateImages {
