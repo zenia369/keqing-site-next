@@ -29,19 +29,11 @@ const PicturesPreview: FC = () => {
             style={{ "--i": idx + 1 } as CSSProperties}
             className="pictures-preview-image"
           >
-            <Image
-              src={src}
-              alt={`Pictures preview: ${idx}`}
-              width={300}
-              height={200}
-            />
+            <Image src={src} alt={`Pictures preview: ${idx}`} width={300} height={200} />
           </div>
         ))}
       </div>
-      <Link
-        href={AppLinks.Pictures}
-        className="self-end text-black hover:underline"
-      >
+      <Link href={AppLinks.Pictures} className="self-end text-black hover:underline">
         View all »
       </Link>
     </section>
