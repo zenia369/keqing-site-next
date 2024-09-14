@@ -1,7 +1,8 @@
-import { AppLinks } from "@/shared/appLinks";
 import Image from "next/image";
 import Link from "next/link";
 import { CSSProperties, FC } from "react";
+
+import { AppLinks } from "@/shared/appLinks";
 
 const images = [
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/page%60s%2Fmain%2Fpictures%2Fphoto_2022-09-15_13-21-32.jpg?alt=media&token",

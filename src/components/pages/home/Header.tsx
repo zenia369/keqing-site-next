@@ -2,9 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-import mainImg from "@/assets/images/keqing.png";
 import electroImg from "@/assets/images/electro.png";
-
+import mainImg from "@/assets/images/keqing.png";
 import { AppLinks } from "@/shared/appLinks";
 
 const Header: FC = () => {

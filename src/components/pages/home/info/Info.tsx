@@ -1,9 +1,10 @@
-import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FC } from "react";
 
 import electroIcon from "@/assets/images/electro.png";
 import { AppLinks } from "@/shared/appLinks";
+
 import Card from "./components/Card";
 
 const images = [
