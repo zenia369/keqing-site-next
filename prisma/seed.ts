@@ -3,13 +3,17 @@ import invariant from "tiny-invariant";
 
 import { createRandomUserStandCharacter } from "@/services/user.service";
 
+async function loadModule(path: string): Promise<any> {
+  return import(path);
+}
+
 const prisma = new PrismaClient();
 
 async function seedToDevelopment() {
-  const characters = await import("../data/characters.json");
-  const pictures = await import("../data/pictures.json");
-  const standCharacters = await import("../data/standCharacters.json");
-  const users = await import("../data/users.json");
+  const characters = await loadModule("../data/characters.json");
+  const pictures = await loadModule("../data/pictures.json");
+  const standCharacters = await loadModule("../data/standCharacters.json");
+  const users = await loadModule("../data/users.json");
 
   for await (const character of characters) {
     await prisma.kqsCharacter.upsert({
@@ -25,10 +29,10 @@ async function seedToDevelopment() {
         previewName: character.previewName,
         slug: character.slug,
         videos: {
-          create: character.videos.map((path) => ({ path })),
+          create: character.videos.map((path: string) => ({ path })),
         },
         photos: {
-          create: character.images.map((image) => ({
+          create: character.images.map((image: { smallImage: string; bigImage: string }) => ({
             small: image.smallImage,
             default: image.bigImage,
           })),
