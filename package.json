@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn run setup && next build",
     "start": "next start",
     "lint": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint --ext .ts,.tsx ./src",
     "lint:fix": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint --fix --ext .ts,.tsx ./src",
