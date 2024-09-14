@@ -1,0 +1,145 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum KqsElementalTypes {
+  Electro
+  Pyro
+  Anemo
+  Geo
+  Hydro
+  Cryo
+}
+
+model KqsIdentity {
+  identityId String @unique
+  email      String @unique
+
+  userId String  @unique
+  user   KqsUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model KqsProfile {
+  id     String   @id @default(cuid())
+  userId String?  @unique
+  user   KqsUser? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name       String
+  avatar     String
+  background String
+  city       String?
+  element    KqsElementalTypes?
+}
+
+model KqsStandCharactersPhoto {
+  id String @id @default(cuid())
+
+  small   String
+  default String
+
+  standCharacterId String             @unique
+  standCharacter   KqsStandCharacters @relation(fields: [standCharacterId], references: [id], onDelete: Cascade)
+}
+
+model KqsStandCharacters {
+  id String @id @default(cuid())
+
+  name       String @unique
+  background String
+
+  element KqsElementalTypes
+  images  KqsStandCharactersPhoto?
+
+  users KqsUser[]
+}
+
+model KqsUser {
+  id String @id @default(cuid())
+
+  isUserCreated               Boolean @default(true)
+  isUserFinishCreatingProfile Boolean @default(false)
+
+  identity  KqsIdentity?
+  profile   KqsProfile?
+  stand     KqsStandCharacters[]
+  favorites KqsCharacterPhoto[]
+}
+
+model KqsResource {
+  id String @id @default(cuid())
+
+  name  String @unique
+  photo String
+  link  String
+
+  characters KqsCharacter[]
+}
+
+model KqsCharacterVideo {
+  id          String        @id @default(cuid())
+  characterId String?
+  character   KqsCharacter? @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  path String
+}
+
+model KqsCharacterPhoto {
+  id          String        @id @default(cuid())
+  characterId String?
+  character   KqsCharacter? @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  users       KqsUser[]
+
+  default String
+  small   String
+}
+
+model KqsCharacter {
+  id         String       @id @default(cuid())
+  resourceId String?
+  resource   KqsResource? @relation(fields: [resourceId], references: [id])
+
+  slug         String @unique
+  name         String
+  photo        String
+  previewName  String
+  previewPhoto String
+  description  String
+
+  videos KqsCharacterVideo[]
+  photos KqsCharacterPhoto[]
+}
+
+model KqsPicturePhoto {
+  id String @id @default(cuid())
+
+  path String
+
+  filters KqsPictureFilter[]
+}
+
+model KqsPictureLabel {
+  id String @id @default(cuid())
+
+  value   String             @unique
+  filters KqsPictureFilter[]
+}
+
+model KqsPictureFilter {
+  id             String            @id @default(cuid())
+  picturePhotos  KqsPicturePhoto[]
+  pictureLabel   KqsPictureLabel?  @relation(fields: [pictureLabelId], references: [id], onDelete: Cascade)
+  pictureLabelId String?
+
+  value String @unique
+}

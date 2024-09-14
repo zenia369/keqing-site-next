@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "KqsProfile" ALTER COLUMN "city" DROP NOT NULL,
+ALTER COLUMN "element" DROP NOT NULL;
