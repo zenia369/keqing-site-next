@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import invariant from "tiny-invariant";
 
 import { getStandCharacterById } from "@/services/characters.service";

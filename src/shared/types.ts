@@ -1,9 +1,5 @@
 import { KqsPictureFilter, KqsPictureLabel } from "@prisma/client";
 
-import mockCharactersData from "@/shared/mocks/characters_images_data";
-import picturesData from "@/shared/mocks/pictures_data.json";
-
-export type PicturesData = typeof picturesData;
 export type PictureItemKeys = "labes" | "tags" | "regions";
 export type PicturesFilteredItame = {
   path: string;
@@ -46,5 +42,3 @@ export type UserStandItem = {
   element: string;
   photo: string;
 };
-
-export type CharacterStandItem = (typeof mockCharactersData)[number];

@@ -1,5 +1,5 @@
 import { KqsStandCharacters } from "@prisma/client";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import invariant from "tiny-invariant";
 
 import { getAuthUser } from "@/services/clerk.service";
