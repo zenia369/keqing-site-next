@@ -1,9 +1,14 @@
+import "./Navigation.css";
+
 import Link from "next/link";
 import { FC } from "react";
-import "./Navigation.css";
+
 import { AppLinks, NavNames } from "@/shared/appLinks";
 
-const charactersNavList: { link: AppLinks; name: NavNames }[] = [
+const charactersNavList: {
+  link: (typeof AppLinks)[keyof typeof AppLinks];
+  name: (typeof NavNames)[keyof typeof NavNames];
+}[] = [
   {
     name: NavNames.Home,
     link: AppLinks.Home,
@@ -25,13 +30,7 @@ const charactersNavList: { link: AppLinks; name: NavNames }[] = [
 const Navigation: FC = () => {
   return (
     <div className="menu">
-      <input
-        className="menu-icon"
-        type="checkbox"
-        id="menu-icon"
-        name="menu-icon"
-        hidden
-      />
+      <input className="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" hidden />
       <label htmlFor="menu-icon"></label>
       <nav className="nav">
         <ul className="pt-5">
