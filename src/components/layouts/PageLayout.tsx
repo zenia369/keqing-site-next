@@ -1,7 +1,8 @@
 import { FC, ReactNode } from "react";
-import Page from "../ui/page/Page";
-import Navigation from "../ui/navigation/Navigation";
+
 import Footer from "../ui/footer/Footer";
+import Navigation from "../ui/navigation/Navigation";
+import Page from "../ui/page/Page";
 
 interface PageLayoutProps {
   children: ReactNode;

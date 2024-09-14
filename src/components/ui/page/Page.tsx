@@ -1,5 +1,7 @@
 import { FC, ReactNode } from "react";
 
+import { cn } from "@/shared/utils/common";
+
 interface PageProps {
   children: ReactNode;
   classes?: string;
@@ -7,7 +9,9 @@ interface PageProps {
 
 const Page: FC<PageProps> = ({ children, classes }) => {
   return (
-    <div className={`container xl m-auto py-5 ${classes}`}>{children}</div>
+    <div className={cn("container xl mx-auto p-5", classes ? { [classes]: Boolean(classes) } : {})}>
+      {children}
+    </div>
   );
 };
 

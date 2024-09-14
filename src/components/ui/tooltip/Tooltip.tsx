@@ -1,6 +1,9 @@
 "use client";
 
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useRef } from "react";
+
+import Modal from "../modal/Modal";
+import useTooltip from "./hooks/useTooltip";
 
 interface TooltipProps {
   text: string;
@@ -8,19 +11,30 @@ interface TooltipProps {
 }
 
 const Tooltip: FC<TooltipProps> = ({ children, text }) => {
-  const [isHover, setIsHover] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const tooltipTextRef = useRef<HTMLParagraphElement>(null);
+  const { isVisible, onMouseEnter, onMouseLeave, position } = useTooltip(
+    tooltipRef,
+    tooltipTextRef
+  );
+
   return (
-    <div
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      className="relative"
-    >
+    <div ref={tooltipRef} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {children}
-      {isHover && (
-        <p className="absolute w-max p-[5px] bg-purple-300 text-xs text-white rounded-md max-w-[300px] left-2/4 right-2/4 -translate-x-2/4 translate-y-1/3">
-          {text}
-        </p>
-      )}
+      {isVisible ? (
+        <Modal>
+          <p
+            ref={tooltipTextRef}
+            className="fixed z-30 w-max p-[5px] bg-purple-300 text-xs text-white rounded-md max-w-[300px] "
+            style={{
+              top: position.top,
+              left: position.left,
+            }}
+          >
+            {text}
+          </p>
+        </Modal>
+      ) : null}
     </div>
   );
 };

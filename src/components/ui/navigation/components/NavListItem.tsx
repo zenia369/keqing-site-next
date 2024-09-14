@@ -1,5 +1,6 @@
-import { FC } from "react";
 import Link from "next/link";
+import { FC } from "react";
+
 import Tooltip from "@/components/ui/tooltip/Tooltip";
 
 interface appNavListItemProps {

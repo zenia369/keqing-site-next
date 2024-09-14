@@ -5,10 +5,8 @@ interface MainProps {
   classes?: string;
 }
 
-const Main: FC<MainProps> = ({ children, classes }) => {
-  return (
-    <main className={`my-8 flex flex-col gap-12 ${classes}`}>{children}</main>
-  );
+const Main: FC<MainProps> = ({ children, classes = "" }) => {
+  return <main className={`my-8 flex flex-col gap-12 ${classes}`}>{children}</main>;
 };
 
 export default Main;
