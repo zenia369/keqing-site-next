@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 
-import Main from "@/components/ui/main/Main";
-import Page from "@/components/ui/page/Page";
-import Navigation from "@/components/ui/navigation/Navigation";
-import Footer from "@/components/ui/footer/Footer";
 import Header from "@/components/pages/home/Header";
-import PicturesPreview from "@/components/pages/home/PicturesPreview";
 import Info from "@/components/pages/home/info/Info";
+import PicturesPreview from "@/components/pages/home/PicturesPreview";
+import Footer from "@/components/ui/footer/Footer";
+import Main from "@/components/ui/main/Main";
+import Navigation from "@/components/ui/navigation/Navigation";
+import Page from "@/components/ui/page/Page";
 
 export const metadata: Metadata = {
   title: "Keqing | Kushnir",
