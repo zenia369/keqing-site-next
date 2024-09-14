@@ -1,22 +1,25 @@
 "use client";
 
 import { FC, FormEventHandler } from "react";
+
 import useFormField, { FormOptions } from "@/hooks/useFormField";
-import { Validations, buildValidation } from "@/shared/utils/validations";
+import { buildValidation, Validations } from "@/shared/utils/validations";
+
 import { useFormReactionContext } from "./context/FormReaction.context";
+import { sendEmailSelf } from "./services";
 
 const emailField: FormOptions<string> = {
   initialValue: "",
   validate: buildValidation(
-    Validations.minLenghtString("Min length email is 3 letters", 3),
-    Validations.emailPattern("Unvalid email pattern")
+    Validations.minLengthString("Min length email is 3 letters", 3),
+    Validations.emailPattern("Invalid email pattern")
   ),
-  customeErrorMessage: (error) => `Email field: ${error}`,
+  customErrorMessage: (error) => `Email field: ${error}`,
 };
 const textField: FormOptions<string> = {
   initialValue: "",
-  validate: buildValidation(Validations.minLenghtString("Min length text is 10 letters", 10)),
-  customeErrorMessage: (error) => `Text field: ${error}`,
+  validate: buildValidation(Validations.minLengthString("Min length text is 10 letters", 10)),
+  customErrorMessage: (error) => `Text field: ${error}`,
 };
 
 const SendFrom: FC = () => {
@@ -46,15 +49,20 @@ const SendFrom: FC = () => {
     event.preventDefault();
     if (!isValid) return;
 
-    setActiveReaction("kq-sending");
+    try {
+      setActiveReaction("kq-sending");
 
-    await new Promise((res) => {
-      setTimeout(res, 5000);
-    });
+      await sendEmailSelf({
+        from: emailValue,
+        message: textValue,
+      });
 
-    setActiveReaction("kq-success");
-    resetEmail();
-    resetText();
+      setActiveReaction("kq-success");
+      resetEmail();
+      resetText();
+    } catch (error) {
+      setActiveReaction("kq-error");
+    }
   };
 
   return (

@@ -1,11 +1,11 @@
 "use client";
 
-import { FC } from "react";
 import Image from "next/image";
+import { FC } from "react";
 
 import kqSuccess from "@/assets/images/mini-keqing-fan.png";
-import kqError from "@/assets/images/mini-keqing-leiin.png";
 import kqLoading from "@/assets/images/mini-keqing-fly.png";
+import kqError from "@/assets/images/mini-keqing-leiin.png";
 
 import { useFormReactionContext } from "./context/FormReaction.context";
 
