@@ -2,11 +2,11 @@
 
 import { useLayoutEffect, useState } from "react";
 
-export type FormValidateStatus = "untouched" | "valid" | "unvalid";
+export type FormValidateStatus = "untouched" | "valid" | "invalid";
 export type FormOptions<T> = {
   initialValue: T;
   validate?: (value: T) => FormValidateStatus;
-  customeErrorMessage?: (value: string) => string;
+  customErrorMessage?: (value: string) => string;
 };
 
 const useFormField = <T = string>({ initialValue, ...options }: FormOptions<T>) => {
@@ -25,9 +25,9 @@ const useFormField = <T = string>({ initialValue, ...options }: FormOptions<T>) 
       } catch (error) {
         const errorMessage = (error as Error).message || (error as any);
         setError(() =>
-          options.customeErrorMessage ? options.customeErrorMessage(errorMessage) : errorMessage
+          options?.customErrorMessage ? options.customErrorMessage(errorMessage) : errorMessage
         );
-        setValidateStatus("unvalid");
+        setValidateStatus("invalid");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,7 +40,7 @@ const useFormField = <T = string>({ initialValue, ...options }: FormOptions<T>) 
   };
 
   return {
-    isError: Boolean(error) && validateStatus === "unvalid",
+    isError: Boolean(error) && validateStatus === "invalid",
     isValid: !Boolean(error) && validateStatus === "valid",
     error,
     status: validateStatus,
