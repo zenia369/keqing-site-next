@@ -4,15 +4,15 @@ import invariant from "tiny-invariant";
 import { createRandomUserStandCharacter } from "@/services/user.service";
 
 async function loadModule(path: string): Promise<any> {
-  return import(path);
+  return import(path).then((m) => m.default);
 }
 
 const prisma = new PrismaClient();
 
 async function seedToDevelopment() {
   const characters = await loadModule("../data/characters.json");
-  const pictures = await loadModule("../data/pictures.json");
   const standCharacters = await loadModule("../data/standCharacters.json");
+  const pictures = await loadModule("../data/pictures.json");
   const users = await loadModule("../data/users.json");
 
   for await (const character of characters) {
@@ -77,7 +77,7 @@ async function seedToDevelopment() {
     });
   }
 
-  for await (const filter of pictures.filteres) {
+  for await (const filter of pictures.filters) {
     for await (const filterItems of filter.items) {
       await prisma.kqsPictureFilter.upsert({
         where: {
@@ -109,7 +109,7 @@ async function seedToDevelopment() {
       },
     });
 
-    for await (const filter of [...photo.regions, ...photo.labes]) {
+    for await (const filter of [...photo.regions, ...photo.labels]) {
       await prisma.kqsPicturePhoto.update({
         where: {
           id: photoId,
