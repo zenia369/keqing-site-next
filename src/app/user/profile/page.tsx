@@ -17,11 +17,6 @@ export const metadata: Metadata = {
   title: "Keqing | Profile",
 };
 
-/**
- *
- *background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('https://images.freeimages.com/images/large-previews/48d/woodgrain-texture-1151631.jpg')
- */
-
 export default async function Route() {
   const [user, profileBackground] = await Promise.all([currentUser(), getProfileBackground()]);
 
@@ -38,10 +33,10 @@ export default async function Route() {
   return (
     <div
       style={{
-        backgroundSize: "100% 100%",
+        background: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)), url("${profileBackground}")`,
+        backgroundSize: "cover",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
-        background: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)), url("${profileBackground}")`,
       }}
     >
       <Page classes="min-h-[100vh]">
