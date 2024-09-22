@@ -16,6 +16,9 @@ export const updateProfileInfo = async (data: Omit<RequestUpdateInfo, "intent">)
   });
 };
 
-export const updateUserStand = async (data: RequestUpdateStand): Promise<void> => {
-  return apiClient.patch<void, RequestUpdateStand>("/api/profile/stand", data);
+export const updateUserStand = async (data: Omit<RequestUpdateStand, "intent">): Promise<void> => {
+  return apiClient.patch<void, RequestUpdateStand>("/api/profile/stand", {
+    intent: "update:profile:stand",
+    ...data,
+  });
 };

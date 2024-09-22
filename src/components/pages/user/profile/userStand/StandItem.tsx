@@ -49,7 +49,7 @@ const StandItemTemplate: FC<Pick<StandItemBaseProps, "character">> = ({ characte
     <img
       src={character?.images?.small ?? character?.images?.default}
       alt={`Character ${character.name}`}
-      className="rounded-t bg-orange-400 "
+      className="rounded-t bg-orange-400 w-[74px] h-[74px]"
     />
     <p className="text-black text-center bg-stone-100 rounded-b uppercase text-[10px] py-1">
       {character.name}

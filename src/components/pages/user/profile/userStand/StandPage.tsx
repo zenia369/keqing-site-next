@@ -30,7 +30,6 @@ const StandPage = ({ charactersData, standData }: StandPageProps) => {
 
     try {
       await updateUserStand({
-        intent: "update:profile:stand",
         standCharactersIds,
       });
     } catch (error) {}

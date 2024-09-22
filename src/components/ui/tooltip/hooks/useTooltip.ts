@@ -38,15 +38,12 @@ const useTooltip = (
       const documentWidth = document.documentElement.clientWidth;
       const documentHeight = document.documentElement.clientHeight;
 
-      const isTooltipParretWidthBigger = tooltipWidth < width;
       const leftBorder = left < middleTextWidth;
       const rightBorder = documentWidth - middleTextWidth < right;
       const topBorder = top < tooltipHeight;
       const bottomBorder = documentHeight - tooltipHeight < bottom;
 
-      let leftPosition = isTooltipParretWidthBigger
-        ? left + width / 2 - middleTextWidth
-        : left + width - middleTextWidth;
+      let leftPosition = left + width / 2 - middleTextWidth;
       let topPosition = bottom + verticalOffset;
 
       if (leftBorder) {
