@@ -44,11 +44,7 @@ const Info: FC = () => {
       </Card>
       <Card title="Голосові історії" classes="justify-center gap-4 w-fit px-3">
         <Image src={electroIcon} alt="electro" width={35} height={35} />
-        <audio
-          controls
-          src="/audio/keqing-voice-history.mp3"
-          aria-label="Keqing voice history"
-        />
+        <audio controls src="/audio/keqing-voice-history.mp3" aria-label="Keqing voice history" />
       </Card>
     </section>
   );
