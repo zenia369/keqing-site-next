@@ -3,6 +3,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 import invariant from "tiny-invariant";
 
+import BackgroundButton from "@/components/pages/user/profile/BackgroundButton";
 import FavoritesPhoto from "@/components/pages/user/profile/FavoritesPhoto";
 import UserCard from "@/components/pages/user/profile/userCard/UserCard";
 import UserStand from "@/components/pages/user/profile/userStand/UserStand";
@@ -42,12 +43,13 @@ export default async function Route() {
       <Page classes="min-h-[100vh]">
         <Navigation pageName="Profile" isShowSendMessageLink isShowAboutPage />
         <Main>
-          <section>
-            <div className="ml-auto w-fit p-2 border border-purple-300 text-purple-200 rounded hover:bg-purple-300 hover:text-white">
+          <section className="flex justify-end gap-4">
+            <BackgroundButton background={profileBackground} />
+            <div className="w-fit p-2 border border-purple-300 text-purple-200 rounded hover:bg-purple-300 hover:text-white">
               <SignOutButton>Log out</SignOutButton>
             </div>
           </section>
-          <section className="flex justify-evenly gap-20">
+          <section className="flex justify-evenly gap-20 ">
             <UserCard profile={profile} />
             <UserStand stand={stand} />
           </section>
