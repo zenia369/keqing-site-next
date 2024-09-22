@@ -53,6 +53,7 @@ export const getCharacterPhotogalleryPhotos = (slug: string) =>
     select: {
       id: true,
       small: true,
+      default: true,
     },
   });
 

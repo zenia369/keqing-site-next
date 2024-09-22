@@ -16,6 +16,7 @@ export const getUserProfileDataByIdentityId = (identityId: KqsIdentity["identity
         select: {
           id: true,
           small: true,
+          default: true,
         },
       },
       profile: true,

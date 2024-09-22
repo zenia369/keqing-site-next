@@ -4,6 +4,7 @@ import { KqsCharacterPhoto } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
 
 import Tooltip from "@/components/ui/tooltip/Tooltip";
 import { cn } from "@/shared/utils/common";
@@ -12,7 +13,7 @@ import Button from "./Button";
 import { addCharacterPhotoToFavorites, removeCharacterPhotoFromFavorites } from "./services";
 
 interface PhotogalleryProps {
-  photos: (Pick<KqsCharacterPhoto, "id" | "small"> & { isFavorite: boolean })[];
+  photos: (Pick<KqsCharacterPhoto, "id" | "small" | "default"> & { isFavorite: boolean })[];
 }
 
 const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
@@ -23,27 +24,32 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
     router.back();
   };
 
-  const handleClick = (characterId: KqsCharacterPhoto["id"], isFavorite: boolean) => async () => {
-    try {
-      setPhotosData((prev) =>
-        prev.map((p) => (p.id === characterId ? { ...p, isFavorite: !isFavorite } : p))
-      );
+  const handleFavoriteClick =
+    (characterId: KqsCharacterPhoto["id"], isFavorite: boolean) => async () => {
+      try {
+        setPhotosData((prev) =>
+          prev.map((p) => (p.id === characterId ? { ...p, isFavorite: !isFavorite } : p))
+        );
 
-      if (isFavorite) {
-        await removeCharacterPhotoFromFavorites({
-          intent: "update:user:favorite:remove",
-          characterId,
-        });
-      } else {
-        await addCharacterPhotoToFavorites({
-          intent: "update:user:favorite:add",
-          characterId,
-        });
+        if (isFavorite) {
+          await removeCharacterPhotoFromFavorites({
+            intent: "update:user:favorite:remove",
+            characterId,
+          });
+        } else {
+          await addCharacterPhotoToFavorites({
+            intent: "update:user:favorite:add",
+            characterId,
+          });
+        }
+      } catch (error) {
+        // To-do handle error
+        setPhotosData((prev) => prev.map((p) => (p.id === characterId ? { ...p, isFavorite } : p)));
       }
-    } catch (error) {
-      // To-do handle error
-      setPhotosData((prev) => prev.map((p) => (p.id === characterId ? { ...p, isFavorite } : p)));
-    }
+    };
+
+  const handleOpenPhotoInNewTab = (url: string) => () => {
+    window.open(url, "_blank");
   };
 
   return (
@@ -52,26 +58,35 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
         Назад
       </Button>
       <ul className="mt-3 px-2 list-none flex flex-wrap gap-1">
-        {photosData.map(({ id, small, isFavorite }) => (
-          <li key={id} className="group flex-grow h-44 relative">
+        {photosData.map((photo) => (
+          <li key={photo.id} className="group flex-grow h-44 relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={small}
+              src={photo.small}
               alt="character preview"
               loading="lazy"
               className="min-h-full min-w-full h-full aspect-[1/2] object-cover"
             />
             <button
               type="button"
+              className="absolute z-10 top-1 right-8 invisible group-hover:visible"
+              onClick={handleOpenPhotoInNewTab(photo.default)}
+            >
+              <Tooltip text="Open photo in new tab">
+                <FaExternalLinkSquareAlt size={20} className="text-purple-500 shadow-l" />
+              </Tooltip>
+            </button>
+            <button
+              type="button"
               className={cn("absolute z-10 top-1 right-1", {
-                ["visible"]: isFavorite,
-                ["invisible group-hover:visible"]: !isFavorite,
+                ["visible"]: photo.isFavorite,
+                ["invisible group-hover:visible"]: !photo.isFavorite,
               })}
-              onClick={handleClick(id, isFavorite)}
+              onClick={handleFavoriteClick(photo.id, photo.isFavorite)}
             >
               <Tooltip
                 text={
-                  isFavorite
+                  photo.isFavorite
                     ? "Remove this photo from your favorites"
                     : "Add this photo to your favorites"
                 }
@@ -79,7 +94,7 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
                 <FaHeart
                   size={20}
                   className={cn("text-purple-300 shadow-lg", {
-                    "text-purple-500": isFavorite,
+                    "text-purple-500": photo.isFavorite,
                   })}
                 />
               </Tooltip>
