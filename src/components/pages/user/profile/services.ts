@@ -1,3 +1,4 @@
+import { RequestConnectionPrepareUPamers } from "@/app/api/connection/route";
 import { RequestUpdateCard, RequestUpdateInfo } from "@/app/api/profile/card/route";
 import { RequestUpdateStand } from "@/app/api/profile/stand/route";
 import { apiClient } from "@/shared/utils/api.client";
@@ -20,5 +21,11 @@ export const updateUserStand = async (data: Omit<RequestUpdateStand, "intent">):
   return apiClient.patch<void, RequestUpdateStand>("/api/profile/stand", {
     intent: "update:profile:stand",
     ...data,
+  });
+};
+
+export const connectionPrepareUPamers = async () => {
+  return apiClient.post<{ url: string }, RequestConnectionPrepareUPamers>("/api/connection", {
+    intent: "connection:prepare:upamers",
   });
 };

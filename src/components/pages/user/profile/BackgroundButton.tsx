@@ -22,7 +22,7 @@ const BackgroundButton = ({ background }: BackgroundButtonProps) => {
     <>
       <Tooltip text="Open background photo">
         <button
-          className="p-2 px-4 border border-purple-300 text-purple-200 rounded h-full"
+          className="p-2 px-4 border border-purple-300 text-purple-200 rounded hover:bg-purple-300 hover:text-white h-full"
           onClick={handleSetShowPhoto}
         >
           <FaRegEye />
