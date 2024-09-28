@@ -44,14 +44,12 @@ export const createConnectionRedirectState = async (
   const userId = await getUserIdByIdentityId(identityId);
   const hasUserConnection = await getHasUserUPamersConnectionByIdentityId(identityId);
 
-  if (!hasUserConnection) {
+  if (hasUserConnection) {
     await prisma.kqsUPamersConnection.delete({
       where: {
         userId: userId!,
       },
     });
-  } else {
-    throw new Error(`User already has connection, identityId=${identityId}`);
   }
 
   const [profile, connection] = await prisma.$transaction([
