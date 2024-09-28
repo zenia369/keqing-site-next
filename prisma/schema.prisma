@@ -71,10 +71,11 @@ model KqsUser {
   isUserCreated               Boolean @default(true)
   isUserFinishCreatingProfile Boolean @default(false)
 
-  identity  KqsIdentity?
-  profile   KqsProfile?
-  stand     KqsStandCharacters[]
-  favorites KqsCharacterPhoto[]
+  identity          KqsIdentity?
+  profile           KqsProfile?
+  uPamersConnection KqsUPamersConnection?
+  stand             KqsStandCharacters[]
+  favorites         KqsCharacterPhoto[]
 }
 
 model KqsResource {
@@ -143,4 +144,13 @@ model KqsPictureFilter {
   pictureLabelId String?
 
   value String @unique
+}
+
+model KqsUPamersConnection {
+  id String @id @default(cuid())
+
+  connectionId String?
+
+  userId String  @unique
+  user   KqsUser @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
