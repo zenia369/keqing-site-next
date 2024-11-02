@@ -9,7 +9,8 @@
     "lint": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint --ext .ts,.tsx ./src",
     "lint:fix": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint --fix --ext .ts,.tsx ./src",
     "docker:db": "docker compose up -d",
-    "setup": "prisma generate && prisma migrate deploy && prisma db seed"
+    "setup": "prisma generate && prisma migrate deploy && prisma db seed",
+    "test": "vitest"
   },
   "dependencies": {
     "@azure/communication-email": "^1.0.0",
@@ -36,11 +37,17 @@
     "winston": "^3.14.2"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
     "@types/bcryptjs": "^2.4.6",
+    "@vitejs/plugin-react": "^4.3.3",
     "cross-env": "^7.0.3",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "jsdom": "^25.0.1",
     "prisma": "^5.14.0",
-    "tsx": "^4.11.0"
+    "tsx": "^4.11.0",
+    "vitest": "^2.1.4"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
