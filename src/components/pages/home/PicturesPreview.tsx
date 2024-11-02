@@ -4,7 +4,7 @@ import { CSSProperties, FC } from "react";
 
 import { AppLinks } from "@/shared/appLinks";
 
-const images = [
+export const images = [
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/page%60s%2Fmain%2Fpictures%2Fphoto_2022-09-15_13-21-32.jpg?alt=media&token",
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/page%60s%2Fmain%2Fpictures%2Fphoto_2022-09-15_13-22-20.jpg?alt=media&token",
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/page%60s%2Fmain%2Fpictures%2Fphoto_2022-09-15_13-22-32.jpg?alt=media&token",

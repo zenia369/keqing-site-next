@@ -9,11 +9,25 @@ import { AppLinks } from "@/shared/appLinks";
 const Header: FC = () => {
   return (
     <header className="my-8 flex items-center justify-around gap-9">
-      <Image src={mainImg} alt="keqing" width={410} height={410} placeholder="blur" />
+      <Image
+        src={mainImg}
+        alt="keqing"
+        width={410}
+        height={410}
+        placeholder="blur"
+        data-testid="header_image_keqing"
+      />
       <div className="flex justify-center flex-col gap-5">
         <div className="flex items-center gap-4">
           <h1 className="text-5xl font-light text-black">Keqing/Ке Цин</h1>
-          <Image src={electroImg} alt="electro" width={80} height={80} placeholder="blur" />
+          <Image
+            src={electroImg}
+            alt="electro"
+            width={80}
+            height={80}
+            placeholder="blur"
+            data-testid="header_image_electro"
+          />
         </div>
         <p className="w-[600px] text-xl text-black ml-3">
           Найголовніший трудоголік Лі Ює. На її думку працювати треба за десятьох, а якість має бути

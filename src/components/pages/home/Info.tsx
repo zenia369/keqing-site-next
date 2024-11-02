@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 import electroIcon from "@/assets/images/electro.png";
 import { AppLinks } from "@/shared/appLinks";
 
-import Card from "./components/Card";
-
-const images = [
+export const images = [
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/characters%2Fkeqing%2Fimage%2Fphoto_2021-12-24_22-06-02.jpg?alt=media&token",
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/characters%2Fkeqing%2Fimage%2Fphoto_2021-12-24_22-08-13.jpg?alt=media&token",
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/characters%2Fkeqing%2Fimage%2Fphoto_2021-12-24_22-07-54.jpg?alt=media&token",
@@ -20,6 +18,23 @@ const images = [
   "https://firebasestorage.googleapis.com/v0/b/keqing-gallery.appspot.com/o/characters%2Fkeqing%2Fimage%2Fkeqing-1.jpg?alt=media&token",
 ];
 
+interface CardProps {
+  title: string;
+  children: ReactNode;
+  classes?: string;
+}
+
+const Card: FC<CardProps> = ({ title, children, classes = "" }) => {
+  return (
+    <div className={`relative kq-border h-32 w-[500px] flex items-center ${classes}`}>
+      <h4 className="absolute text-lg py-2 px-6 bg-purple-400/70 opacity-90 text-black rounded-3xl -translate-y-1/2 translate-x-[10%] top-0 left-0">
+        {title}
+      </h4>
+      {children}
+    </div>
+  );
+};
+
 const Info: FC = () => {
   return (
     <section className="flex gap-8">
@@ -30,7 +45,7 @@ const Info: FC = () => {
         >
           ще...
         </Link>
-        <div className="flex overflow-hidden gap-3">
+        <div className="flex overflow-hidden gap-3" data-testid="info_images_wrapper">
           {images.map((src, idx) => (
             <Image
               key={`keqing-info-${idx}`}
@@ -43,7 +58,13 @@ const Info: FC = () => {
         </div>
       </Card>
       <Card title="Голосові історії" classes="justify-center gap-4 w-fit px-3">
-        <Image src={electroIcon} alt="electro" width={35} height={35} />
+        <Image
+          src={electroIcon}
+          alt="electro"
+          width={35}
+          height={35}
+          data-testid="info_image_electro"
+        />
         <audio controls src="/audio/keqing-voice-history.mp3" aria-label="Keqing voice history" />
       </Card>
     </section>

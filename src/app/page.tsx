@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import Header from "@/components/pages/home/Header";
-import Info from "@/components/pages/home/info/Info";
+import Info from "@/components/pages/home/Info";
 import PicturesPreview from "@/components/pages/home/PicturesPreview";
 import Footer from "@/components/ui/footer/Footer";
 import Main from "@/components/ui/main/Main";
