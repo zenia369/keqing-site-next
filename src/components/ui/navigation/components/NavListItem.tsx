@@ -3,17 +3,13 @@ import { FC } from "react";
 
 import Tooltip from "@/components/ui/tooltip/Tooltip";
 
-interface appNavListItemProps {
+interface NavListItemProps {
   tooltipText: string;
   href: string;
   text: string;
 }
 
-const appNavListItem: FC<appNavListItemProps> = ({
-  href,
-  text,
-  tooltipText,
-}) => {
+const NavListItem: FC<NavListItemProps> = ({ href, text, tooltipText }) => {
   return (
     <li>
       <Tooltip text={tooltipText}>
@@ -25,4 +21,4 @@ const appNavListItem: FC<appNavListItemProps> = ({
   );
 };
 
-export default appNavListItem;
+export default NavListItem;

@@ -30,7 +30,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./derectives.d.ts",
-    "./src/test/setup.tsx"
+    "./src/test/setup.tsx",
+    "vitest.config.mts"
   ],
   "exclude": ["node_modules"]
 }

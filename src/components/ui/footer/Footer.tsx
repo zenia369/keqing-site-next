@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = ({ showLink = true }) => {
         })}
       >
         <div className="flex justify-between items-center gap-2">
-          <MdOutlinedFlag className="text-[20px]" />
+          <MdOutlinedFlag className="text-[20px]" data-testid="FlagIcon" />
           <p>По запитаням звертатись у формі рецензії.</p>
         </div>
         {showLink ? (

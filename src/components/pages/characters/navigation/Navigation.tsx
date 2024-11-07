@@ -5,7 +5,7 @@ import { FC } from "react";
 
 import { AppLinks, NavNames } from "@/shared/appLinks";
 
-const charactersNavList: {
+export const charactersNavList: {
   link: (typeof AppLinks)[keyof typeof AppLinks];
   name: (typeof NavNames)[keyof typeof NavNames];
 }[] = [

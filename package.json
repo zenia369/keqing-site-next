@@ -10,7 +10,8 @@
     "lint:fix": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint --fix --ext .ts,.tsx ./src",
     "docker:db": "docker compose up -d",
     "setup": "prisma generate && prisma migrate deploy && prisma db seed",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@azure/communication-email": "^1.0.0",
@@ -40,8 +41,10 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/bcryptjs": "^2.4.6",
     "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-v8": "^2.1.4",
     "cross-env": "^7.0.3",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "jsdom": "^25.0.1",

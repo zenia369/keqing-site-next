@@ -12,7 +12,7 @@ import { cn } from "@/shared/utils/common";
 import Button from "./Button";
 import { addCharacterPhotoToFavorites, removeCharacterPhotoFromFavorites } from "./services";
 
-interface PhotogalleryProps {
+export interface PhotogalleryProps {
   photos: (Pick<KqsCharacterPhoto, "id" | "small" | "default"> & { isFavorite: boolean })[];
 }
 
@@ -59,7 +59,7 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
       </Button>
       <ul className="mt-3 px-2 list-none flex flex-wrap gap-1">
         {photosData.map((photo) => (
-          <li key={photo.id} className="group flex-grow h-44 relative">
+          <li key={photo.id} className="group flex-grow h-44 relative" data-testid={photo.id}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={photo.small}
@@ -71,9 +71,14 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
               type="button"
               className="absolute z-10 top-1 right-8 invisible group-hover:visible"
               onClick={handleOpenPhotoInNewTab(photo.default)}
+              data-testid="external_link_button"
             >
               <Tooltip text="Open photo in new tab">
-                <FaExternalLinkSquareAlt size={20} className="text-purple-500 shadow-l" />
+                <FaExternalLinkSquareAlt
+                  size={20}
+                  className="text-purple-500 shadow-l"
+                  data-testid="ExternalLinkIcon"
+                />
               </Tooltip>
             </button>
             <button
@@ -83,6 +88,7 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
                 ["invisible group-hover:visible"]: !photo.isFavorite,
               })}
               onClick={handleFavoriteClick(photo.id, photo.isFavorite)}
+              data-testid="heart_button"
             >
               <Tooltip
                 text={
@@ -96,6 +102,7 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
                   className={cn("text-purple-300 shadow-lg", {
                     "text-purple-500": photo.isFavorite,
                   })}
+                  data-testid="HeartIcon"
                 />
               </Tooltip>
             </button>

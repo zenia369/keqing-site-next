@@ -30,6 +30,7 @@ const Tooltip: FC<TooltipProps> = ({ children, text }) => {
               top: position.top,
               left: position.left,
             }}
+            role="tooltip"
           >
             {text}
           </p>

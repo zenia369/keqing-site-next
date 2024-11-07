@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { TbExternalLink } from "react-icons/tb";
 
-interface CharactersCardProps {
+export interface CharactersCardProps {
   card: KqsResource & {
     characters: Pick<KqsCharacter, "id" | "previewName" | "slug" | "previewPhoto">[];
   };
@@ -18,7 +18,7 @@ const CharactersCard: FC<CharactersCardProps> = ({ card }) => {
           className="text-purple-500 text-3xl flex items-center gap-2"
           prefetch={false}
         >
-          {card.name} <TbExternalLink className="text-xl" />
+          {card.name} <TbExternalLink className="text-xl" data-testid="ExternalLinkIcon" />
         </Link>
         <div
           className="rounded-full w-12 h-12 bg-no-repeat bg-cover bg-center"
@@ -28,7 +28,7 @@ const CharactersCard: FC<CharactersCardProps> = ({ card }) => {
       </div>
       <ul className="flex gap-3 overflow-x-auto">
         {card.characters.map((character) => (
-          <li key={character.id} className="relative">
+          <li key={character.id} className="relative" data-testid={character.id}>
             <Link
               href={`/characters/${character.slug}`}
               className="group block w-28 h-44 bg-no-repeat bg-cover rounded-lg"
