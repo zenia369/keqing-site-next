@@ -59,12 +59,12 @@ const UPamersConnectionCard = ({ url }: { url?: string }) => {
       </div>
     </>
   ) : (
-    "No user data found"
+    "Дані не знайдено"
   );
 
   return (
     <div className="flex items-center gap-5 bg-purple-300 p-2 rounded-md">
-      {loading ? <p>Loading...</p> : content}
+      {loading ? <p>Завантаження...</p> : content}
     </div>
   );
 };

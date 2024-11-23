@@ -19,11 +19,11 @@ interface CreatePageFormProps {
 const formFieldValidation = buildValidation<string | null>(
   (value) => {
     if (typeof value === "string" && value.trim()) return value;
-    throw new Error(`Value should be string: ${value}`);
+    throw new Error(`Значення має бути текстом: ${value}`);
   },
   (value) => {
     if (!value || value?.length > 2) return value;
-    throw new Error("User should provide value");
+    throw new Error("Користувач має бути наданий");
   }
 );
 
@@ -86,7 +86,7 @@ const CreatePageForm: FC<CreatePageFormProps> = ({ username }) => {
 
   return (
     <form className="mt-20 flex flex-col gap-4" onSubmit={handleSubmit}>
-      <FormField name="User Name" required={false} error={errors?.username}>
+      <FormField name="Ім'я" required={false} error={errors?.username}>
         <input
           type="text"
           id="username"
@@ -95,10 +95,10 @@ const CreatePageForm: FC<CreatePageFormProps> = ({ username }) => {
           defaultValue={username ?? undefined}
         />
       </FormField>
-      <FormField name="City" error={errors?.city}>
+      <FormField name="Місто" error={errors?.city}>
         <SelectUserCity />
       </FormField>
-      <FormField name="Element" error={errors?.element}>
+      <FormField name="Елемент" error={errors?.element}>
         <SelectUserElement />
       </FormField>
       <button
@@ -108,7 +108,7 @@ const CreatePageForm: FC<CreatePageFormProps> = ({ username }) => {
         })}
         disabled={loading}
       >
-        {loading ? `Creating profile for ${username}...` : "Go to Adventures"}
+        {loading ? `Створення профілю для ${username}...` : "Вперед до пригод"}
       </button>
     </form>
   );

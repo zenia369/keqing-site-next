@@ -42,7 +42,7 @@ export default async function Route() {
                 Welcome abort {user.username}!
               </h2>
               <p className="text-lg text-white mt-5">
-                Please fill the form to finish your registration <br /> on{" "}
+                Заповніть форму для завершення створення профілю <br /> на{" "}
                 <span className="text-purple-200 text-xl">Keqing-site</span>
               </p>
             </div>
