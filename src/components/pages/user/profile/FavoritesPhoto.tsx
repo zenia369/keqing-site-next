@@ -57,7 +57,7 @@ const FavoritesPhoto: FC<FavoritesPhotoProps> = ({ photos }) => {
                   className="absolute z-10 top-1 right-8 invisible group-hover:visible"
                   onClick={handleOpenPhotoInNewTab(photo.default)}
                 >
-                  <Tooltip text="Open photo in new tab">
+                  <Tooltip text="Відкрити фото в новій вкладці">
                     <FaExternalLinkSquareAlt size={20} className="text-purple-500 shadow-l" />
                   </Tooltip>
                 </button>
@@ -66,7 +66,7 @@ const FavoritesPhoto: FC<FavoritesPhotoProps> = ({ photos }) => {
                   className="absolute z-10 top-1 right-1 invisible group-hover:visible"
                   onClick={handleClick(photo.id)}
                 >
-                  <Tooltip text="Remove this photo from your favorites">
+                  <Tooltip text="Прибрати фото з списку улюблених фото">
                     <FaHeart size={20} className="text-purple-500 shadow-l" />
                   </Tooltip>
                 </button>

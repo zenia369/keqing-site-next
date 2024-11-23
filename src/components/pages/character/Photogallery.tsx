@@ -73,7 +73,7 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
               onClick={handleOpenPhotoInNewTab(photo.default)}
               data-testid="external_link_button"
             >
-              <Tooltip text="Open photo in new tab">
+              <Tooltip text="Відкрити фото в новій вкладці">
                 <FaExternalLinkSquareAlt
                   size={20}
                   className="text-purple-500 shadow-l"
@@ -93,8 +93,8 @@ const Photogallery: FC<PhotogalleryProps> = ({ photos }) => {
               <Tooltip
                 text={
                   photo.isFavorite
-                    ? "Remove this photo from your favorites"
-                    : "Add this photo to your favorites"
+                    ? "Прибрати фото з списку улюблених фото"
+                    : "Додати фото до списку улюблених фото"
                 }
               >
                 <FaHeart
