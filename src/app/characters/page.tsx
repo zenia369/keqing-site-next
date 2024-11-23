@@ -19,7 +19,7 @@ export default async function Route() {
     <Page>
       <Navigation />
       <Main>
-        <h2 className="kq-text-600 text-5xl font-semibold">Characters</h2>
+        <h2 className="kq-text-600 text-5xl font-semibold">Персонажі</h2>
         <section className="flex flex-col gap-4">
           {cards.map((c) => (
             <CharactersCard key={c.id} card={c} />

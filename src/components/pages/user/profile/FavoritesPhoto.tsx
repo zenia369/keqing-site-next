@@ -75,10 +75,10 @@ const FavoritesPhoto: FC<FavoritesPhotoProps> = ({ photos }) => {
           </ul>
         ) : (
           <div className="flex justify-center items-center flex-col gap-3">
-            <p className="text-white text-xl">You look lonely, We can fix that</p>
+            <p className="text-white text-xl">Ти виглядаєш самотньо, Ми можемо виправити це</p>
             <Button asSlot className="text-white flex gap-1 items-center lowercase">
               <Link href={AppLinks.Characters}>
-                Visit characters page <FiExternalLink />
+                Відвідай сторніку з персонажами <FiExternalLink />
               </Link>
             </Button>
           </div>

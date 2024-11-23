@@ -21,16 +21,16 @@ const Card: FC<CardProps> = ({ profile, children, avatarComponent }) => {
         {avatarComponent}
         <div className="text-white text-lg font-normal flex-1">
           <h4 className="capitalize max-w-[250px] text-ellipsis whitespace-nowrap overflow-hidden">
-            Your Name: {profile.name}
+            Ім&apos;я: {profile.name}
           </h4>
           <p className="max-w-[250px] text-ellipsis whitespace-nowrap overflow-hidden">
             ID: {profile.id}
           </p>
           <p className="capitalize max-w-[250px] text-ellipsis whitespace-nowrap overflow-hidden">
-            City: {profile.city}
+            Місто: {profile.city}
           </p>
           <p className="capitalize max-w-[250px] text-ellipsis whitespace-nowrap overflow-hidden">
-            Elemental: {profile.element}
+            Елемент: {profile.element}
           </p>
         </div>
       </div>

@@ -35,7 +35,7 @@ const PicturesPreview: FC = () => {
         ))}
       </div>
       <Link href={AppLinks.Pictures} className="self-end text-black hover:underline">
-        View all »
+        Всі фото »
       </Link>
     </section>
   );

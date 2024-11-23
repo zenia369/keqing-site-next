@@ -20,7 +20,7 @@ const BackgroundButton = ({ background }: BackgroundButtonProps) => {
 
   return (
     <>
-      <Tooltip text="Open background photo">
+      <Tooltip text="Відкрити фото заставки сторінки">
         <button
           className="p-2 px-4 border border-purple-300 text-purple-200 rounded hover:bg-purple-300 hover:text-white h-full"
           onClick={handleSetShowPhoto}
@@ -43,7 +43,7 @@ const BackgroundButton = ({ background }: BackgroundButtonProps) => {
                   className="p-2 px-4 border bg-purple-400 border-purple-300 text-white rounded self-start"
                   onClick={handleSetShowPhoto}
                 >
-                  close
+                  Закрити
                 </button>
               </div>
             </div>

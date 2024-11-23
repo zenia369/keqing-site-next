@@ -11,15 +11,17 @@ import { sendEmailSelf } from "./services";
 const emailField: FormOptions<string> = {
   initialValue: "",
   validate: buildValidation(
-    Validations.minLengthString("Min length email is 3 letters", 3),
-    Validations.emailPattern("Invalid email pattern")
+    Validations.minLengthString("Мінімальна кількість літер в елетроній пошті становит 3", 3),
+    Validations.emailPattern("Не вірний патер елетроної пошти")
   ),
-  customErrorMessage: (error) => `Email field: ${error}`,
+  customErrorMessage: (error) => `Поле електроної пошити: ${error}`,
 };
 const textField: FormOptions<string> = {
   initialValue: "",
-  validate: buildValidation(Validations.minLengthString("Min length text is 10 letters", 10)),
-  customErrorMessage: (error) => `Text field: ${error}`,
+  validate: buildValidation(
+    Validations.minLengthString("Мінімальна кількість літер становит 10", 10)
+  ),
+  customErrorMessage: (error) => `Поле повідомлення: ${error}`,
 };
 
 const SendFrom: FC = () => {
@@ -80,7 +82,7 @@ const SendFrom: FC = () => {
         <fieldset className="flex flex-col gap-5 flex-grow">
           <input
             name="kq-email"
-            placeholder="Email"
+            placeholder="Елетронна пошта"
             type="text"
             value={emailValue}
             onChange={(e) => setEmailValue(e.target.value)}
@@ -91,12 +93,12 @@ const SendFrom: FC = () => {
             className="p-3 text-white bg-purple-400 rounded-md border-none drop-shadow-xl shadow-purple-300 hover:drop-shadow-2xl disabled:bg-purple-300"
             disabled={!isValid}
           >
-            Send
+            Надіслати
           </button>
         </fieldset>
         <textarea
           name="kq-text"
-          placeholder="Write here..."
+          placeholder="Пиши тут..."
           cols={30}
           rows={10}
           value={textValue}

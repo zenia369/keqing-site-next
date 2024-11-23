@@ -8,10 +8,10 @@ import ModalLayout from "@/components/ui/modal/ModalLayout";
 import { connectionPrepareUPamers } from "../services";
 
 const connectionButtonMessages = {
-  connect: "Connect",
-  prepare: "Preparing to redirecting",
-  progress: "Redirecting... After successful connection reload this page",
-  failed: "Prepared stage failed, try again",
+  connect: "Під'єднати",
+  prepare: "Підготовка до перенаправлення",
+  progress: "Перенаправлення... Після успішного підключення перезавантажте цю сторінку",
+  failed: "Етап підготовлення не вдалося виконати, спробуйте ще раз",
 };
 
 const UPamersConnectionButton = () => {
@@ -45,7 +45,7 @@ const UPamersConnectionButton = () => {
         className="p-2 px-4 border border-purple-300 text-purple-200 rounded hover:bg-purple-300 hover:text-white"
         onClick={handleSetShowModal}
       >
-        Connect to U-Pamers
+        Підклюдись до U-Pamers
       </button>
       {showModal ? (
         <Modal>
@@ -53,27 +53,27 @@ const UPamersConnectionButton = () => {
             <div className="bg-white rounded m-10 p-5 max-w-[600px]">
               <div className="flex justify-between items-center gap-5">
                 <h2 className="text-black text-xl font-medium">
-                  Connect your <span className="text-purple-500">Keqing-site</span> profile to
-                  U-pamers community!
+                  З&apos;єднай <span className="text-purple-500">Keqing-site</span> профіль з
+                  U-pamers спільнотою!
                 </h2>
                 <button
                   className="p-2 px-4 border bg-purple-400 border-purple-300 text-white rounded self-start"
                   onClick={handleSetShowModal}
                   type="button"
                 >
-                  close
+                  Закрити
                 </button>
               </div>
               <p className="text-base text-black mt-5">
-                Join U-pamer community and find like-minded people and start a conversation with
-                them, no matter where you are.
+                Приєднуйтесь до спільноти U-pamers, знаходьте однодумців і починайте з ними
+                спілкуватися з ними, де б ви не знаходилися.
               </p>
               <p className="text-base text-black mt-5">
-                Joining U-pamers community you&apos;re agreed to:
+                Приєднуючись до спільноти U-pamers, ви даєте свою згоду:
               </p>
               <ul className="list-disc text-sm">
-                <li className="ml-5">Share your data between U-pamers and Keqing-site portals</li>
-                <li className="ml-5">Privacy and Terms of the U-pamers portal</li>
+                <li className="ml-5">Обмін даними між U-pamers та порталами Keqing-сайту</li>
+                <li className="ml-5">Конфіденційність та умови користування порталом U-pamers</li>
               </ul>
               <button
                 className="w-full mt-10 px-3 py-2 bg-green-300 hover:bg-green-400 disabled:bg-green-200 text-white rounded disabled:cursor-not-allowed"

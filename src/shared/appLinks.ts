@@ -1,9 +1,9 @@
 export const NavNames = {
-  Characters: "Characters",
-  About: "About",
-  SendMessage: "Send message",
-  Profile: "Profile",
-  Home: "Home",
+  Characters: "Персонажі",
+  About: "Про сайт",
+  SendMessage: "Надіслати повідомлення",
+  Profile: "Профіль",
+  Home: "Головна",
 } as const;
 
 export const AppLinks = {
